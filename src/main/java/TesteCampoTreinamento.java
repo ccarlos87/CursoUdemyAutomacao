@@ -30,13 +30,13 @@ public class TesteCampoTreinamento {
 
 	@Test
 	public void testeTextField() {
-		dsl.escreve("elementosForm:nome", "Carlos");
+		dsl.escrever("elementosForm:nome", "Carlos");
 		Assert.assertEquals("Carlos", dsl.obterValorCampo("elementosForm:nome"));
 	}
 
 	@Test
 	public void deveInteragirComTextArea() {
-		dsl.escreve("elementosForm:sugestoes", "Sugestão");
+		dsl.escrever("elementosForm:sugestoes", "Sugestão");
 		Assert.assertEquals("Sugestão", dsl.obterValorCampo("elementosForm:sugestoes"));
 
 		// driver.findElement(By.id("elementosForm:sugestoes")).sendKeys("Sugestão");
@@ -55,8 +55,8 @@ public class TesteCampoTreinamento {
 
 	@Test
 	public void deveInteragirComCheckBox() {
-		dsl.clicarCheckBox("elementosForm:comidaFavorita:0");
-		Assert.assertTrue(dsl.isCheckBoxMarcado("elementosForm:comidaFavorita:0"));
+		dsl.clicarCheck("elementosForm:comidaFavorita:0");
+		Assert.assertTrue(dsl.isCheckMarcado("elementosForm:comidaFavorita:0"));
 
 		// driver.findElement(By.id("elementosForm:comidaFavorita:0")).click();
 		// Assert.assertTrue(driver.findElement(By.id("elementosForm:comidaFavorita:0")).isSelected());

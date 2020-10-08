@@ -35,7 +35,7 @@ public class TesteRegrasNegocio {
 
 	@Test
 	public void deveValidarSobrenomeObrigatorio() {
-		dsl.escreve("elementosForm:nome", "Carlos");
+		dsl.escrever("elementosForm:nome", "Carlos");
 		driver.findElement(By.id("elementosForm:cadastrar")).click();
 		Alert alert = driver.switchTo().alert();
 		Assert.assertEquals("Sobrenome eh obrigatorio", alert.getText());
@@ -44,8 +44,8 @@ public class TesteRegrasNegocio {
 
 	@Test
 	public void deveValidarSexoObrigatorio() {
-		dsl.escreve("elementosForm:nome", "Carlos");
-		dsl.escreve("elementosForm:sobrenome", "AB");
+		dsl.escrever("elementosForm:nome", "Carlos");
+		dsl.escrever("elementosForm:sobrenome", "AB");
 		driver.findElement(By.id("elementosForm:cadastrar")).click();
 		Alert alert = driver.switchTo().alert();
 		Assert.assertEquals("Sexo eh obrigatorio", alert.getText());
@@ -54,8 +54,8 @@ public class TesteRegrasNegocio {
 
 	@Test
 	public void deveValidarComidaObrigatorio() {
-		dsl.escreve("elementosForm:nome", "Carlos");
-		dsl.escreve("elementosForm:sobrenome", "AB");
+		dsl.escrever("elementosForm:nome", "Carlos");
+		dsl.escrever("elementosForm:sobrenome", "AB");
 		driver.findElement(By.id("elementosForm:sexo:0")).click();
 		driver.findElement(By.id("elementosForm:comidaFavorita:0")).click();
 		driver.findElement(By.id("elementosForm:comidaFavorita:3")).click();
@@ -67,8 +67,8 @@ public class TesteRegrasNegocio {
 
 	@Test
 	public void deveValidarEsporteObrigatorio() {
-		dsl.escreve("elementosForm:nome", "Carlos");
-		dsl.escreve("elementosForm:sobrenome", "AB");
+		dsl.escrever("elementosForm:nome", "Carlos");
+		dsl.escrever("elementosForm:sobrenome", "AB");
 		driver.findElement(By.id("elementosForm:sexo:0")).click();
 		driver.findElement(By.id("elementosForm:comidaFavorita:0")).click();
 		Select combo = new Select(driver.findElement(By.id("elementosForm:esportes")));
