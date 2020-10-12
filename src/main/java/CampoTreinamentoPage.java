@@ -1,11 +1,13 @@
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
+
+import br.carlosab.com.DSL;
 
 public class CampoTreinamentoPage {
 
 	private DSL dsl;
 
-	public CampoTreinamentoPage(WebDriver driver) {
-		dsl = new DSL(driver);
+	public CampoTreinamentoPage() {
+		dsl = new DSL();
 	}
 
 	public void setNome(String nome) {
@@ -17,11 +19,11 @@ public class CampoTreinamentoPage {
 	}
 
 	public void setSexoMasculino() {
-		dsl.clicarRadio("elementosForm:sexo:0");
+		dsl.clicaRadio("elementosForm:sexo:0");
 	}
 
 	public void setSexoFeminino() {
-		dsl.clicarRadio("elementosForm:sexo:1");
+		dsl.clicaRadio("elementosForm:sexo:1");
 	}
 
 	public void setComidaCarne() {
@@ -59,31 +61,38 @@ public class CampoTreinamentoPage {
 	}
 
 	public String obterResultadoCadastro() {
-		return dsl.obterTexto("resultado");
+		// return dsl.obterTexto("resultado"); //via texto na tela
+		return dsl.obterTexto(By.xpath("//*[@id='resultado']/span")); // via xpath
 	}
 
 	public String obterNomeCadastro() {
-		return dsl.obterTexto("descNome");
+		// return dsl.obterTexto("descNome"); //via texto na tela
+		return dsl.obterTexto(By.xpath("//*[@id='descNome']/span")); // via xpath
 	}
 
 	public String obterSobrenomeCadastro() {
-		return dsl.obterTexto("descSobrenome");
+		// return dsl.obterTexto("descSobrenome");
+		return dsl.obterTexto(By.xpath("//*[@id='descSobrenome']/span")); // via xpath
 	}
 
 	public String obterSexoCadastro() {
-		return dsl.obterTexto("descSexo");
+		// return dsl.obterTexto("descSexo");
+		return dsl.obterTexto(By.xpath("//*[@id='descSexo']/span")); // via xpath
 	}
 
 	public String obterComidaCadastro() {
-		return dsl.obterTexto("descComida");
+		// return dsl.obterTexto("descComida");
+		return dsl.obterTexto(By.xpath("//*[@id='descComida']/span")); // via xpath
 	}
 
 	public String obterEscolaridadeCadastro() {
-		return dsl.obterTexto("descEscolaridade");
+		// return dsl.obterTexto("descEscolaridade");
+		return dsl.obterTexto(By.xpath("//*[@id='descEscolaridade']/span")); // via xpath
 	}
 
 	public String obterEsportesCadastro() {
-		return dsl.obterTexto("descEsportes");
+		// return dsl.obterTexto("descEsportes");
+		return dsl.obterTexto(By.xpath("//*[@id='descEsportes']/span")); // via xpath
 	}
 
 }

@@ -1,3 +1,6 @@
+import static br.carlosab.com.DriverFactory.getDriver;
+import static br.carlosab.com.DriverFactory.killDriver;
+
 import java.util.List;
 
 import org.junit.After;
@@ -5,27 +8,24 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import br.carlosab.com.DSL;
 
 public class TesteCampoTreinamento {
 
-	private WebDriver driver;
 	private DSL dsl;
 
 	@Before
 	public void inicializa() {
-		System.setProperty("webdriver.chrome.driver", "C://chromedriver/chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-		dsl = new DSL(driver);
+		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new DSL();
 	}
 
 	@After
 	public void finaliza() {
-		driver.quit();
+		killDriver();
 	}
 
 	@Test
@@ -46,7 +46,7 @@ public class TesteCampoTreinamento {
 
 	@Test
 	public void deveInteragirComRadioButton() {
-		dsl.clicarRadio("elementosForm:sexo:0");
+		dsl.clicaRadio("elementosForm:sexo:0");
 		Assert.assertTrue(dsl.isRadioMarcado("elementosForm:sexo:0"));
 
 		// driver.findElement(By.id("elementosForm:sexo:0")).click();
@@ -64,7 +64,7 @@ public class TesteCampoTreinamento {
 
 	@Test
 	public void deveInteragirComCombo() {
-		WebElement element = driver.findElement(By.id("elementosForm:escolaridade"));
+		WebElement element = getDriver().findElement(By.id("elementosForm:escolaridade"));
 		Select combo = new Select(element);
 		// combo.selectByIndex(2); seleciona opção no combo por ordem
 		combo.selectByVisibleText("Mestrado"); // seleciona opção no combo por texto
@@ -94,7 +94,7 @@ public class TesteCampoTreinamento {
 		dsl.selecionarCombo("elementosForm:esportes", "Corrida");
 		dsl.selecionarCombo("elementosForm:esportes", "O que eh esporte?");
 
-		WebElement element = driver.findElement(By.id("elementosForm:esportes"));
+		WebElement element = getDriver().findElement(By.id("elementosForm:esportes"));
 		Select combo = new Select(element);
 		// combo.selectByVisibleText("Natacao");
 		// combo.selectByVisibleText("Corrida");

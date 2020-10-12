@@ -1,3 +1,6 @@
+import static br.carlosab.com.DriverFactory.getDriver;
+import static br.carlosab.com.DriverFactory.killDriver;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -6,26 +9,22 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
+import br.carlosab.com.DSL;
 
 public class TesteCampoTreinamentoProfessor {
 
-	private WebDriver driver;
 	private DSL dsl;
 
 	@Before
 	public void inicializa() {
-		driver = new FirefoxDriver();
-		driver.manage().window().setSize(new Dimension(1200, 765));
-		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-		dsl = new DSL(driver);
+		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new DSL();
 	}
 
 	@After
 	public void finaliza() {
-		driver.quit();
+		killDriver();
 	}
 
 	@Test
@@ -50,7 +49,7 @@ public class TesteCampoTreinamentoProfessor {
 
 	@Test
 	public void deveIntegarirComRadioButton() {
-		dsl.clicarRadio("elementosForm:sexo:0");
+		dsl.clicaRadio("elementosForm:sexo:0");
 		Assert.assertTrue(dsl.isRadioMarcado("elementosForm:sexo:0"));
 	}
 
